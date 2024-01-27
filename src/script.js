@@ -13,6 +13,9 @@ const Calculator = () => {
 	const [result, setResult] = useState("");
 
 	const handleEvaluation = (value) => {
+		if (input === '') {
+			setResult('')
+		}
 		setInput((prevInput) => prevInput + value);
 	};
 	const handleClear = () => {
@@ -27,7 +30,8 @@ const Calculator = () => {
 		try {
 			setResult(eval(input).toString());
 		} catch (error) {
-			setResult(error);
+			setResult('Invalid Expression');
+			setInput('')
 		}
 	};
 	return (
